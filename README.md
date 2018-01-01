@@ -48,6 +48,10 @@
 2. https://bigbully.github.io/Dapper-translation/
 3. https://tech.meituan.com/mt-mtrace.html
 4. https://github.com/jaegertracing/jaeger
+5. https://github.com/alextanhongpin/go-jaeger-trace
+6. http://github.com/jukylin/trace_example
+7. http://github.com/jukylin/blog/blob/master/Uber分布式追踪系统Jaeger使用介绍和案例【PHP%20%20%20Hprose%20%20%20Go】.md
+8. http://www.infoq.com/cn/articles/evolving-distributed-tracing-at-uber-engineering
 
 # 赞助我
 
