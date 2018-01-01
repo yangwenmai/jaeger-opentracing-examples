@@ -21,7 +21,7 @@ func main() {
 		Sampler: &jaegerClientConfig.SamplerConfig{
 			Type:  "const",
 			Param: 1,
-			// SamplingServerURL: "172.17.0.19:5775",
+			// SamplingServerURL: "172.17.0.19:5775", // 刚开始没有搞懂上报的服务器URL，以为是这个，结果不是这个；
 		},
 		Reporter: &jaegerClientConfig.ReporterConfig{
 			LogSpans:            true,
@@ -38,7 +38,7 @@ func main() {
 	defer closer.Close()
 	t = tracer
 
-	tracer2(tracer2(testTracer1(t))) // working
+	testTracer2(testTracer2(testTracer1(t))) // working
 	// testTracer()
 
 	http.HandleFunc("/", HelloHandler)
@@ -67,7 +67,7 @@ func testTracer1(t opentracing.Tracer) (opentracing.Tracer, opentracing.Span) {
 	return t, span
 }
 
-func tracer2(t opentracing.Tracer, span opentracing.Span) (opentracing.Tracer, opentracing.Span) {
+func testTracer2(t opentracing.Tracer, span opentracing.Span) (opentracing.Tracer, opentracing.Span) {
 	span2 := t.StartSpan("span_2", opentracing.ChildOf(span.Context()))
 	defer span2.Finish()
 	span2.LogFields(log.String("hello", "span2"))
